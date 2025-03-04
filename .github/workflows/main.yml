@@ -1,0 +1,21 @@
+name: Run JAR File on GitHub
+
+on:
+  workflow_dispatch:  # Allows manual execution
+
+jobs:
+  run-jar:
+    runs-on: ubuntu-latest  # Uses GitHub-hosted Ubuntu machine
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3  # Clones the repo
+
+      - name: Set Up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'  # Latest OpenJDK distribution
+          java-version: '17'       # Change this to match your Java version
+
+      - name: Run JAR File
+        run: java -jar Mars4_5.jar  # Replace with your actual .jar filename
